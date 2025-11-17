@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body {
+            background: #111;
+            color: white;
+            font-family: Arial;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            color: #000;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+            margin: auto;
+        }
+        .task {
+            background: #f3f3f3;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .task a {
+            margin-right: 10px;
+            color: blue;
+            text-decoration: none;
+        }
+
+        .task form {
+            display: inline;
+        }
+
+        .btn-complete {
+            background: green;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-incomplete {
+            background: orange;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-btn {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background: blue;
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: green; font-size: medium;">
+            {% for message in messages %}
+                {{message}}
+            {% endfor %}
+        </h1>
+        <h1>Todo List</h1>
+
+        {% for task in tasks %}
+        <div class="task">
+            <p>
+                <strong>{{ task.title }}</strong>  
+                <br>
+                <small>Created on: {{ task.created_at }}</small>
+                <br><br>
+
+                <!-- Update & Delete -->
+                <a href="{% url 'update' task.id %}">Update</a> |
+                <a href="{% url 'delete' task.id %}">Delete</a>
+
+                <!-- Mark Complete / Incomplete -->
+                <form action="{% url 'complete' task.id %}" method="post">
+                    {% csrf_token %}
+                    {% if task.completed %}
+                        <button type="submit" class="btn-incomplete">Mark Incomplete</button>
+                    {% else %}
+                        <button type="submit" class="btn-complete">Mark Complete</button>
+                    {% endif %}
+                </form>
+            </p>
+        </div>
+        {% empty %}
+        <h3>No tasks found. Create one!</h3>
+        {% endfor %}
+
+        <!-- Add task -->
+        <a class="add-btn" href="{% url 'post' %}">Add New Task</a>
+    </div>
+    <script>
+        
+    </script>
+
+</body>
+</html>

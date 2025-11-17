@@ -1,0 +1,37 @@
+############################
+# PYTHON / DJANGO IGNORE
+############################
+
+# Byte-compiled / cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+
+# SQLite Database (Local Only)
+db.sqlite3
+
+# Django static files (collected)
+staticfiles/
+static/
+
+# Media uploads (if any)
+media/
+
+# Python egg files
+*.egg-info/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db

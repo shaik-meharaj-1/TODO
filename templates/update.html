@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPDATE TASK</title>
+    <style>
+        body{
+            height: 80vh;
+            width: 90vw;
+            display: flex;
+            justify-content: center;
+            background-color: black;
+            align-items: center;
+        }
+        .container{
+            height: fit-content;
+            width: fit-content;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>UPDATE TASK</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <label for="">Task:</label>
+            <input type="text" name="title" required>
+            <button type="submit">submit</button>
+        </form>
+    </div>
+</body>
+</html>
