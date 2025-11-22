@@ -91,9 +91,9 @@
                 <form action="{% url 'complete' task.id %}" method="post">
                     {% csrf_token %}
                     {% if task.completed %}
-                        <button type="submit" class="btn-incomplete">Task Pending</button>
-                    {% else %}
                         <button type="submit" class="btn-complete">Task Completed</button>
+                    {% else %}
+                        <button type="submit" class="btn-incomplete">Task Pending</button>
                     {% endif %}
                 </form>
             </p>
